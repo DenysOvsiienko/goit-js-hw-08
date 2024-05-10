@@ -26,12 +26,16 @@ img {
 .gallery-item {
   width: calc((100% - 24px * 2) / 3);
   height: 200px;
+  transition: transform 250ms ease;
 }
 
-.gallery-link {
+.gallery-item:hover,
+.gallery-item:focus {
+  transform: scale(1.04);
 }
 
 .gallery-image {
   object-fit: cover;
-  height: 200px;
+  height: 100%;
+  width: 100%;
 }
