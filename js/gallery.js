@@ -83,20 +83,17 @@ const markupImages = images
   .join('');
 galleryList.insertAdjacentHTML('afterbegin', markupImages);
 
-const galleryLinks = document.querySelectorAll('.gallery-link');
-galleryLinks.forEach(link =>
-  link.addEventListener('click', event => {
-    event.preventDefault();
-    if (event.target.nodeName !== 'IMG') {
-      return;
-    }
-    console.log(event.target.dataset.source);
-    basicLightbox
-      .create(
-        `
-		<img width="1112" height="640 " src="${event.target.dataset.source}">
-	`,
-      )
-      .show();
-  }),
-);
+galleryList.addEventListener('click', galleryImageSelect);
+function galleryImageSelect(event) {
+  event.preventDefault();
+  if (event.target.nodeName !== 'IMG') {
+    return;
+  }
+  console.log(event.target.dataset.source);
+
+  basicLightbox
+    .create(
+      `<img width="1280" height="853" src="${event.target.dataset.source}">`,
+    )
+    .show();
+}
